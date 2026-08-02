@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1280">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Afroz Khan — Graphic Designer based in Mumbra, Thane. Branding, logo design, social media creatives, print & digital design.">
 <title>Afroz Khan — Graphic Designer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +30,12 @@
     color:var(--ink);
     font-family:'Space Grotesk', sans-serif;
     overflow-x:hidden;
+    position:relative;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:9999; pointer-events:none;
+    opacity:0.035; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   .mono{font-family:'JetBrains Mono', monospace;}
@@ -89,6 +96,15 @@
   #backToTop.show{opacity:1; visibility:visible; transform:translateY(0) scale(1);}
   #backToTop:hover{background:var(--coral); transform:translateY(-4px) scale(1.05);}
 
+  /* ---------- cursor glow (desktop only) ---------- */
+  #cursorGlow{
+    position:fixed; top:0; left:0; width:420px; height:420px; z-index:1;
+    border-radius:50%; pointer-events:none; will-change:transform;
+    background:radial-gradient(circle, rgba(242,176,30,0.10) 0%, rgba(255,90,54,0.05) 45%, transparent 72%);
+    transform:translate(-50%,-50%); opacity:0; transition:opacity .5s var(--ease);
+  }
+  #cursorGlow.show{opacity:1;}
+
   /* ---------- scroll progress ---------- */
   #scrollProgress{
     position:fixed; top:0; left:0; height:3px; width:0%;
@@ -111,7 +127,9 @@
   .nav-inner{
     max-width:1180px; margin:0 auto; padding:18px 32px;
     display:flex; align-items:center; justify-content:space-between;
+    transition:padding .5s var(--ease);
   }
+  nav.scrolled .nav-inner{padding:12px 32px;}
   .logo{
     display:flex; align-items:center; gap:8px;
     font-family:'Anton', sans-serif; font-size:20px; letter-spacing:0.5px;
@@ -182,8 +200,14 @@
     background:var(--ink); color:var(--paper); padding:15px 28px; border-radius:100px;
     font-size:14px; font-weight:600; letter-spacing:0.5px; display:inline-flex; align-items:center; gap:8px;
     transition:transform .45s var(--ease), background .45s var(--ease), box-shadow .45s var(--ease);
-    will-change:transform;
+    will-change:transform; position:relative; overflow:hidden; isolation:isolate;
   }
+  .btn-primary::after{
+    content:""; position:absolute; inset:0; z-index:-1;
+    background:linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.35) 40%, transparent 60%);
+    transform:translateX(-120%); transition:transform .7s var(--ease);
+  }
+  .btn-primary:hover::after{transform:translateX(120%);}
   .btn-primary:hover{transform:translateY(-3px); background:var(--coral); box-shadow:0 14px 30px -10px rgba(255,90,54,0.5);}
   .btn-secondary{
     border:1.5px solid var(--ink); padding:15px 28px; border-radius:100px;
@@ -562,6 +586,7 @@
     <div class="filter-bar reveal">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="logo">Logo Design</button>
+      <button class="filter-btn" data-filter="tshirt">T-Shirt Design</button>
       <button class="filter-btn" data-filter="banner">Banners</button>
       <button class="filter-btn" data-filter="sticker">Product Stickers</button>
       <button class="filter-btn" data-filter="menu">Menu Cards</button>
@@ -577,6 +602,10 @@
       <div class="g-card" data-cat="logo"><img src="https://i.ibb.co/bgLYFkVX/image.png" alt="Logo Design 5" loading="lazy"><div class="g-overlay"><span class="g-cat">Logo Design</span><span class="g-title">Logo Design 05</span></div></div>
       <div class="g-card" data-cat="logo"><img src="https://i.ibb.co/3YcLsWrN/NH-Enterprises.png" alt="Logo Design — NH Enterprises" loading="lazy"><div class="g-overlay"><span class="g-cat">Logo Design</span><span class="g-title">NH Enterprises</span></div></div>
       <div class="g-card" data-cat="logo"><img src="https://i.ibb.co/990kQVJS/Magic-Moment-Sports.png" alt="Logo Design — Magic Moment Sports" loading="lazy"><div class="g-overlay"><span class="g-cat">Logo Design</span><span class="g-title">Magic Moment Sports</span></div></div>
+
+      <div class="g-card" data-cat="tshirt"><img src="https://i.ibb.co/8gH4qW0G/Tshirt-Design-01.jpg" alt="T-Shirt Design 01" loading="lazy"><div class="g-overlay"><span class="g-cat">T-Shirt Design</span><span class="g-title">T-Shirt Design 01</span></div></div>
+      <div class="g-card" data-cat="tshirt"><img src="https://i.ibb.co/vCy3K6RJ/Tshirt-Design.jpg" alt="T-Shirt Design 02" loading="lazy"><div class="g-overlay"><span class="g-cat">T-Shirt Design</span><span class="g-title">T-Shirt Design 02</span></div></div>
+      <div class="g-card" data-cat="tshirt"><img src="https://i.ibb.co/VpQhkH5Y/Tshirt-02.jpg" alt="T-Shirt Design 03" loading="lazy"><div class="g-overlay"><span class="g-cat">T-Shirt Design</span><span class="g-title">T-Shirt Design 03</span></div></div>
 
       <div class="g-card" data-cat="banner"><img src="https://i.ibb.co/j9Nk3kDB/Whats-App-Image-2026-07-29-at-8-52-46-PM.jpg" alt="Banner Design 1" loading="lazy"><div class="g-overlay"><span class="g-cat">Banner Design</span><span class="g-title">Promotional Banner 01</span></div></div>
       <div class="g-card" data-cat="banner"><img src="https://i.ibb.co/d4ShWBxV/Whats-App-Image-2026-07-29-at-9-08-12-PM-2.jpg" alt="Banner Design 2" loading="lazy"><div class="g-overlay"><span class="g-cat">Banner Design</span><span class="g-title">Promotional Banner 02</span></div></div>
@@ -708,6 +737,7 @@
 </div>
 
 <button id="backToTop" aria-label="Back to top">↑</button>
+<div id="cursorGlow"></div>
 
 <footer>
   <div><b>Afroz Khan</b> — Graphic Designer · Mumbra, Thane, Maharashtra, India</div>
@@ -791,6 +821,23 @@
     });
     btn.addEventListener('mouseleave', ()=>{ btn.style.transform = ''; });
   });
+
+  /* ---------- ambient cursor glow (desktop, fine pointer only) ---------- */
+  const cursorGlow = document.getElementById('cursorGlow');
+  if(cursorGlow && !reduceMotion && window.matchMedia('(pointer:fine)').matches){
+    let gx = window.innerWidth/2, gy = window.innerHeight/2, cx = gx, cy = gy;
+    window.addEventListener('mousemove', (e)=>{
+      gx = e.clientX; gy = e.clientY;
+      cursorGlow.classList.add('show');
+    });
+    document.addEventListener('mouseleave', ()=> cursorGlow.classList.remove('show'));
+    (function glowLoop(){
+      cx += (gx - cx) * 0.12;
+      cy += (gy - cy) * 0.12;
+      cursorGlow.style.transform = `translate(${cx}px, ${cy}px) translate(-50%,-50%)`;
+      requestAnimationFrame(glowLoop);
+    })();
+  }
 
   /* ---------- hero polaroid subtle tilt parallax ---------- */
   const polaroid = document.querySelector('.polaroid');
